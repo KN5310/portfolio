@@ -1,0 +1,86 @@
+<!-- project/projects_a.html -->
+
+<div class="project">
+    <h3>世界崩壊少女『初希アイ』</h3>
+
+    <img src="static/image/img_project_a.webp" alt="世界崩壊少女『初希アイ』の紹介画像" class="project-image">
+
+    <a href="https://hyogokurumi.com/project/sekaihokaishojo/" target="_blank">
+        プロジェクトサイトへ
+    </a>
+
+
+    <div class="project-description-section">
+        <div class="accordion-section">
+            <div class="accordion-header">プロジェクト概要</div>
+            <div class="accordion-content">
+                <p>人類が滅亡した世界で唯一生き残った少女「初希アイ」の世界を、
+                    OpenAIとXの力で実現する創作プロジェクトです。</p>
+            </div>
+        </div>
+
+        <div class="accordion-section">
+            <div class="accordion-header">技術スタック</div>
+            <div class="accordion-content">
+                <ul>
+                    <li>HTML / CSS / JavaScript</li>
+                    <li>Flask / Python</li>
+                    <li>SQLite</li>
+                    <li>OpenAI GPT（文章） / DALL·E 2（画像）</li>
+                    <li>Google Vision API（画像検査）</li>
+                    <li>Lolipop（レンタルサーバー）</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="accordion-section">
+            <div class="accordion-header">ユーザー体験の流れ</div>
+            <div class="accordion-content">
+                <ol>
+                    <li>WEBサイトにアクセス・投稿</li>
+                    <li>投稿内容がDB保存される</li>
+                    <li>Cron + PythonでAIがポスト内容を生成</li>
+                    <li>Xに自動投稿</li>
+                    <li>ユーザーが結果を楽しむ</li>
+                </ol>
+            </div>
+        </div>
+        <div class="accordion-section">
+            <div class="accordion-header">特徴・こだわり</div>
+            <div class="accordion-content">
+                <p>
+                    初希アイのXアカウントを見たとき、まるでその世界に生きる少女本人が投稿しているかのように見えることを重視しました。そのため、AI出力によるブレが表に出ないよう、生成結果に対して評価・改稿・添削の処理を徹底し、世界観との一貫性を保っています。
+                </p>
+            </div>
+        </div>
+
+
+        <div class="accordion-section">
+            <div class="accordion-header">課題・工夫</div>
+            <div class="accordion-content">
+                <p>
+                    ユーザーの投稿内容を尊重しつつ、世界観やキャラクター設定に沿った出力を実現する評価ロジックの構築に苦戦しました。プロンプト内の指示だけでは生成精度の調整が難しく、OpenAI
+                    APIの応答に対して独自の採点方式を実装することで、より安定した出力を可能にしました。現在も品質向上のためのアップデートを続けています。<br>
+                    また、GoogleVision
+                    APIによる画像解析処理では、DALL·E2が生成したPNG画像をそのまま処理していたため、メモリ使用量がサーバーの上限を超えるエラーが発生しました。エラー内容が一貫せず、Tracebackの出力も毎回異なっていたため、当初は原因の特定に時間を要しました。最終的には、画像形式の変換によりメモリ負荷を抑えることで、安定した処理を実現しました。
+                </p>
+            </div>
+        </div>
+
+        <div class="accordion-section">
+            <div class="accordion-header">制作目的</div>
+            <div class="accordion-content">
+                <p>
+                    AIにも人間に近い創作ができることを実証したいという好奇心から、実験的な取り組みとして制作をスタートしました。AIはあくまで与えられた指示の範囲内でしか生成できませんが、そこにランダムなプロンプトを加えることで予測不可能な要素が生まれ、観察する人間側には、あたかも意思や感情を持った存在が創作しているかのように感じられます。
+                </p>
+
+                <p>
+                    X（旧Twitter）のアカウントを舞台にするアイデアは、約20年前にネット掲示板で見かけたある書き込みにヒントを得ました。そこには「オンラインゲームのフレンドに会いに行ったら相手がブリキのおもちゃだった」という夢の話が綴られていました。実際、SNSのタイムラインに流れる投稿をしたユーザーが、同じ三次元空間に生きる人間だとは誰にも断言できません。この曖昧さを活かし、人間の想像力を利用することで、別世界からの投稿として楽しむコンテンツを目指しました。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <p>※ユーザー投稿を扱うためセキュリティ要件を厳守しており、関連コードの詳細は非公開です。</p>
+
+</div>

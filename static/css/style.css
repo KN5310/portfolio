@@ -1,0 +1,259 @@
+/* style.css */
+
+/* =================================================
+   リセット & ベーススタイル
+================================================= */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+    background: #f7f9fc;
+    color: #333;
+}
+
+/* =================================================
+   ヘッダー・セクション
+================================================= */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+header h1 {
+    font-size: 2.8rem;
+    margin-bottom: 0;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+section {
+    margin-bottom: 40px;
+}
+
+section h2 {
+    border-bottom: 3px solid #4caf50;
+    padding-bottom: 6px;
+    margin-bottom: 20px;
+    color: #4caf50;
+}
+
+/* =================================================
+   リスト
+================================================= */
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+}
+
+ol {
+    padding-left: 20px;
+}
+
+/* =================================================
+   アコーディオン関連スタイル
+================================================= */
+.accordion-section {
+    border-bottom: 1px solid #ccc;
+}
+
+.accordion-header {
+    cursor: pointer;
+    padding: 10px;
+    background: #eee;
+    user-select: none;
+}
+
+.accordion-header.active {
+    background: #ddd;
+}
+
+.accordion-content {
+    display: none;
+    padding: 10px;
+    background: #fafafa;
+}
+
+/* =================================================
+   プロジェクトカード（グリッドレイアウト）
+================================================= */
+
+
+.project-description-section {
+    margin: 20px auto;
+}
+
+.projects {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.project {
+    background: #fff;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 15px;
+}
+
+.project h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.3rem;
+}
+
+.project p {
+    margin: 0 0 10px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.project a {
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.project a:hover {
+    text-decoration: underline;
+}
+
+.project-image {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1em;
+    display: block;
+}
+
+/* =================================================
+   フッター
+================================================= */
+footer {
+    text-align: center;
+    color: #999;
+    font-size: 0.85rem;
+    margin-top: 60px;
+    border-top: 1px solid #ddd;
+    padding-top: 15px;
+}
+
+/* =================================================
+   メインタイトルの回転アニメーション用
+================================================= */
+#main-title {
+    display: inline-block;
+    animation: rotate 5s linear infinite;
+    transform-origin: center center;
+}
+
+@keyframes spin {
+    0% {
+        transform: rotateY(0deg);
+    }
+    100% {
+        transform: rotateY(360deg);
+    }
+}
+
+/* =================================================
+   ローディング画面全体
+================================================= */
+#loading {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: black;
+    color: white;
+    font-family: monospace, monospace;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    font-size: 3rem;
+    opacity: 1;
+    transition: opacity 0.5s ease, background-color 0.5s ease;
+}
+
+/* ホワイトアウト用クラス */
+#loading.whiteout {
+    background: white;
+    color: white; /* テキストは見えなくする */
+    opacity: 1;
+}
+
+/* フェードアウト用クラス */
+#loading.fadeout {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+/* =================================================
+   Canvasノイズ部分（砂嵐エフェクト）
+================================================= */
+#noise {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    image-rendering: pixelated;
+    z-index: 1;
+}
+
+/* =================================================
+   ローディングテキスト（明滅アニメーション）
+================================================= */
+.loading-text {
+    position: relative;
+    z-index: 3; /* canvasより上でも blend で視覚合成される */
+    animation: blink 1.5s infinite alternate;
+    letter-spacing: 0.1em;
+    font-family: monospace, monospace;
+    font-size: 3rem;
+    color: white;
+    mix-blend-mode: difference; /* ← ここ */
+    opacity: 0.9; /* 調整可能 */
+    filter: contrast(1.8) brightness(1.2); /* optional: 効果を強調 */
+    pointer-events: none;
+}
+
+/* 文字の明滅アニメーション */
+@keyframes blink {
+    0% {
+        opacity: 0.1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* =================================================
+   ページ本文初期状態は非表示（ローディング中）
+================================================= */
+body > *:not(#loading) {
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.8s ease;
+}
+
+/* ロード完了後、本文フェードイン */
+body.loaded > *:not(#loading) {
+    opacity: 1;
+    pointer-events: auto;
+}
