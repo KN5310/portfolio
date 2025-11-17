@@ -95,7 +95,7 @@ function setupAccordion(container) {
 // プロジェクトHTMLを一括で読み込み、順番通りに挿入＋アコーディオン設定
 // ————————————————————————————
 window.addEventListener('DOMContentLoaded', () => {
-  const projects = ['a', 'b'];
+  const projects = ['a', 'b', 'c', 'd'];
   const container = document.getElementById('projects-container');
 
   Promise.all(
